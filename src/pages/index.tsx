@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import Head from "next/head";
 import Image from "next/image";
 
+import Map from "@/components/Map";
 import styles from "@/styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -108,6 +109,9 @@ export default function Home() {
               with&nbsp;Vercel.
             </p>
           </a>
+        </div>
+        <div className={styles.map}>
+          <Map />
         </div>
       </main>
     </>
