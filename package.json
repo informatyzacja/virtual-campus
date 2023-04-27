@@ -1,5 +1,5 @@
 {
-  "name": "wirtualny-kampus",
+  "name": "virtual-campus",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,7 @@
   "packageManager": "pnpm@8.3.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/informatyzacja/wirtualny-kampus.git"
+    "url": "https://github.com/informatyzacja/virtual-campus.git"
   },
   "author": {
     "name": "Michał Korczak",
@@ -29,9 +29,9 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/informatyzacja/wirtualny-kampus/issues"
+    "url": "https://github.com/informatyzacja/virtual-campus/issues"
   },
-  "homepage": "https://github.com/informatyzacja/wirtualny-kampus#readme",
+  "homepage": "https://github.com/informatyzacja/virtual-campus#readme",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.6.0",
