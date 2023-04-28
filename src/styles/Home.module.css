@@ -97,7 +97,7 @@
 
 .center::before,
 .center::after {
-  content: "";
+  content: '';
   left: 50%;
   position: absolute;
   filter: blur(45px);
@@ -226,4 +226,9 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+.map {
+  width: 100%;
+  height: 40rem;
 }
