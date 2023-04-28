@@ -3,6 +3,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 
 import type { GeoJsonObject } from "geojson";
+import type { Layer } from "leaflet";
 import { GeoJSON, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 import mapData from "@/components/Map/mapData.json";
@@ -16,7 +17,8 @@ const Map = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <GeoJSON data={mapData as GeoJsonObject} />
+
+      <GeoJSON onEachFeature={onEachFeature} data={mapData as GeoJsonObject} />
 
       <Marker
         position={[51.1091064802161, 17.06046003426282]}
@@ -28,5 +30,11 @@ const Map = () => {
     </MapContainer>
   );
 };
+
+function onEachFeature(feature: GeoJSON.Feature, layer: Layer) {
+  if (feature.properties?.name) {
+    layer.bindPopup(feature.properties.name as string);
+  }
+}
 
 export default Map;
