@@ -1,11 +1,11 @@
-import { Inter } from "next/font/google";
-import Head from "next/head";
-import Image from "next/image";
+import { Inter } from 'next/font/google';
+import Head from 'next/head';
+import Image from 'next/image';
 
-import Map from "@/components/Map";
-import styles from "@/styles/Home.module.css";
+import Map from '@/components/Map';
+import styles from '@/styles/Home.module.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   return (
@@ -28,7 +28,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{" "}
+              By{' '}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
