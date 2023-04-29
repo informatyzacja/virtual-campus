@@ -1,3 +1,4 @@
+// eslint-disable @cspell/spellchecker
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
@@ -6,7 +7,7 @@ import 'leaflet-easybutton/src/easy-button.css';
 
 import type { GeoJsonObject } from 'geojson';
 import type { Layer } from 'leaflet';
-import L, { marker } from 'leaflet';
+import L, { circle, marker } from 'leaflet';
 import { useCallback } from 'react';
 import { FaMapMarker } from 'react-icons/fa';
 import { GeoJSON, MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
@@ -29,11 +30,16 @@ const Map = () => {
     L.easyButton('<FaMapMarker/>', () => {
       //TODO currently displaying an icon doesn't work. No idea how to use an icon from react-icons instead of a font awesome webFont
 
-      // eslint-disable-next-line @cspell/spellchecker
+      interface locationReference {
+        marker?: L.Marker;
+        circle?: L.Circle;
+      }
+
+      let markerReference: L.Marker = marker([0, 0]);
+      let circleReference: L.Circle = circle([0, 0], 0);
       reference
         .locate({ enableHighAccuracy: true })
         .on('locationfound', function (e) {
-          // eslint-disable-next-line @cspell/spellchecker
           const userLocation = L.point(e.latlng.lat, e.latlng.lng);
           if (!maxBounds.contains(userLocation)) {
             //works only if manually set to the same bounds as in MapContainer as there is no method to retrieve them
@@ -41,10 +47,23 @@ const Map = () => {
             return;
           }
           // setPosition()
-          // eslint-disable-next-line @cspell/spellchecker
+
+          if (!markerReference.getLatLng().equals([0, 0])) {
+            reference.removeLayer(markerReference);
+            reference.removeLayer(circleReference);
+
+            // markerReference = marker([0,0]);
+            // circleReference = circle([0,0], 0);
+          }
+
+          markerReference.remove();
+          circleReference.remove();
+
           reference.flyTo(e.latlng, reference.getMaxZoom());
-          marker(e.latlng).bindPopup('Twoja lokalizacja').addTo(reference);
-          L.circle(e.latlng, e.accuracy).addTo(reference);
+          markerReference = marker(e.latlng)
+            .bindPopup('Twoja lokalizacja')
+            .addTo(reference);
+          circleReference = L.circle(e.latlng, e.accuracy).addTo(reference);
         });
     }).addTo(reference);
   }, []);
