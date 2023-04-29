@@ -42,6 +42,9 @@ importers:
       leaflet-defaulticon-compatibility:
         specifier: ^0.1.1
         version: 0.1.1
+      leaflet-easybutton:
+        specifier: ^2.4.0
+        version: 2.4.0
       leaflet-geosearch:
         specifier: ^3.8.0
         version: 3.8.0
@@ -5270,6 +5273,15 @@ packages:
       {
         integrity: sha512-vDBFdlUAwjSEGep9ih8kfJilf6yN8V9zTbF5NC/1ZwLeGko3RUQepspPnGCRMFV51dY3Lb3hziboicrFz+rxQA==,
       }
+    dev: false
+
+  /leaflet-easybutton@2.4.0:
+    resolution:
+      {
+        integrity: sha512-O+qsQq4zTF6ds8VClnytobTH/MKalctlPpiA8L+bNKHP14J3lgJpvEd/jSpq9mHTI6qOzRAvbQX6wS6qNwThvg==,
+      }
+    dependencies:
+      leaflet: 1.9.3
     dev: false
 
   /leaflet-geosearch@3.8.0:
