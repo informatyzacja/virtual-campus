@@ -13,6 +13,11 @@ import { GeoJSON, MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
 import mapData from '@/components/Map/mapData.json';
 
+const maxBounds = L.bounds(
+  L.point([51.119462, 17.038357]),
+  L.point([51.093382, 17.087239])
+);
+
 const Map = () => {
   const mapContainerRef = useCallback((reference: L.Map) => {
     // Creates a button that centers the map on the User's location
@@ -22,18 +27,14 @@ const Map = () => {
     }
 
     L.easyButton('<FaMapMarker/>', () => {
-      //currently displaying icon doesn't work. No idea how to use an icon from react-icons instead of a font awesome webFont
+      //TODO currently displaying an icon doesn't work. No idea how to use an icon from react-icons instead of a font awesome webFont
       // eslint-disable-next-line @cspell/spellchecker
       reference.locate().on('locationfound', function (e) {
         // eslint-disable-next-line @cspell/spellchecker
-        const bounds = L.bounds(
-          L.point([51.119462, 17.038357]),
-          L.point([51.093382, 17.087239])
-        );
-        // eslint-disable-next-line @cspell/spellchecker
         const userLocation = L.point(e.latlng.lat, e.latlng.lng);
-        if (!bounds.contains(userLocation)) {
+        if (!maxBounds.contains(userLocation)) {
           //works only if manually set to the same bounds as in MapContainer as there is no method to retrieve them
+          //TODO Add a message if user is outside map bounds
           return;
         }
         // setPosition()
@@ -47,8 +48,8 @@ const Map = () => {
     <MapContainer
       center={[51.10888547242358, 17.060051620079904]}
       maxBounds={[
-        [51.119462, 17.038357],
-        [51.093382, 17.087239],
+        [maxBounds.getTopLeft().x, maxBounds.getTopLeft().y],
+        [maxBounds.getBottomRight().x, maxBounds.getBottomRight().y],
       ]}
       zoom={17}
       maxZoom={18}
