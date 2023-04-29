@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "pnpm --dir frontend dev",
     "postinstall": "husky install",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.graphql,.gql .",
-    "format:check": "prettier --ignore-unknown --check src"
+    "build": "pnpm --dir frontend build",
+    "start": "pnpm --dir frontend start",
+    "lint": "pnpm --dir frontend lint",
+    "format:check": "prettier --ignore-unknown --check frontend/src"
   },
   "packageManager": "pnpm@8.3.1",
   "repository": {
@@ -33,36 +33,9 @@
     "url": "https://github.com/informatyzacja/virtual-campus/issues"
   },
   "homepage": "https://github.com/informatyzacja/virtual-campus#readme",
-  "dependencies": {
-    "@chakra-ui/icons": "^2.0.19",
-    "@chakra-ui/react": "^2.6.0",
-    "@chakra-ui/system": "^2.5.6",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@next/font": "^13.3.1",
-    "framer-motion": "^10.12.4",
-    "jotai": "^2.0.4",
-    "leaflet": "^1.9.3",
-    "leaflet-defaulticon-compatibility": "^0.1.1",
-    "leaflet-geosearch": "^3.8.0",
-    "next": "13.3.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.8.0",
-    "react-leaflet": "^4.2.1"
-  },
   "devDependencies": {
-    "@alergeek-ventures/eslint-config": "^5.0.109",
-    "@next/eslint-plugin-next": "^13.3.1",
-    "@types/geojson": "^7946.0.10",
-    "@types/leaflet": "^1.9.3",
-    "@types/node": "18.16.1",
-    "@types/react": "18.2.0",
-    "@types/react-dom": "18.2.1",
-    "eslint": "8.39.0",
     "husky": "^8.0.3",
-    "prettier": "^2.8.8",
-    "typescript": "5.0.4"
+    "prettier": "^2.8.8"
   },
   "engines": {
     "node": "20.0.0"
