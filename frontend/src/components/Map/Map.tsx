@@ -6,7 +6,7 @@ import 'leaflet-easybutton/src/easy-button.css';
 
 import type { GeoJsonObject } from 'geojson';
 import type { Layer } from 'leaflet';
-import L from 'leaflet';
+import L, { marker } from 'leaflet';
 import { useCallback } from 'react';
 import { FaMapMarker } from 'react-icons/fa';
 import { GeoJSON, MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
@@ -28,19 +28,24 @@ const Map = () => {
 
     L.easyButton('<FaMapMarker/>', () => {
       //TODO currently displaying an icon doesn't work. No idea how to use an icon from react-icons instead of a font awesome webFont
+
       // eslint-disable-next-line @cspell/spellchecker
-      reference.locate().on('locationfound', function (e) {
-        // eslint-disable-next-line @cspell/spellchecker
-        const userLocation = L.point(e.latlng.lat, e.latlng.lng);
-        if (!maxBounds.contains(userLocation)) {
-          //works only if manually set to the same bounds as in MapContainer as there is no method to retrieve them
-          //TODO Add a message if user is outside map bounds
-          return;
-        }
-        // setPosition()
-        // eslint-disable-next-line @cspell/spellchecker
-        reference.flyTo(e.latlng, reference.getMaxZoom());
-      });
+      reference
+        .locate({ enableHighAccuracy: true })
+        .on('locationfound', function (e) {
+          // eslint-disable-next-line @cspell/spellchecker
+          const userLocation = L.point(e.latlng.lat, e.latlng.lng);
+          if (!maxBounds.contains(userLocation)) {
+            //works only if manually set to the same bounds as in MapContainer as there is no method to retrieve them
+            //TODO Add a message if user is outside map bounds
+            return;
+          }
+          // setPosition()
+          // eslint-disable-next-line @cspell/spellchecker
+          reference.flyTo(e.latlng, reference.getMaxZoom());
+          marker(e.latlng).bindPopup('Twoja lokalizacja').addTo(reference);
+          L.circle(e.latlng, e.accuracy).addTo(reference);
+        });
     }).addTo(reference);
   }, []);
 
