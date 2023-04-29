@@ -11,8 +11,14 @@ import mapData from '@/components/Map/mapData.json';
 const Map = () => {
   return (
     <MapContainer
-      center={[51.10888547242358, 17.060051620079904]}
+      maxBounds={[
+        [51.119462, 17.038357],
+        [51.093382, 17.087239],
+      ]}
+      maxZoom={18}
+      minZoom={15}
       zoom={17}
+      center={[51.10888547242358, 17.060051620079904]}
       scrollWheelZoom={true}
       style={{ height: '100%', width: '100%' }}
     >
