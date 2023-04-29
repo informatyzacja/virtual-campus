@@ -8,6 +8,7 @@ import type { GeoJsonObject } from 'geojson';
 import type { Layer } from 'leaflet';
 import L from 'leaflet';
 import { useCallback } from 'react';
+import { FaMapMarker } from 'react-icons/fa';
 import { GeoJSON, MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
 import mapData from '@/components/Map/mapData.json';
@@ -20,12 +21,24 @@ const Map = () => {
       return;
     }
 
-    L.easyButton('<faMapMarker/>', () => {
+    L.easyButton('<FaMapMarker/>', () => {
+      //currently displaying icon doesn't work. No idea how to use an icon from react-icons instead of a font awesome webFont
       // eslint-disable-next-line @cspell/spellchecker
       reference.locate().on('locationfound', function (e) {
+        // eslint-disable-next-line @cspell/spellchecker
+        const bounds = L.bounds(
+          L.point([51.119462, 17.038357]),
+          L.point([51.093382, 17.087239])
+        );
+        // eslint-disable-next-line @cspell/spellchecker
+        const userLocation = L.point(e.latlng.lat, e.latlng.lng);
+        if (!bounds.contains(userLocation)) {
+          //works only if manually set to the same bounds as in MapContainer as there is no method to retrieve them
+          return;
+        }
         // setPosition()
         // eslint-disable-next-line @cspell/spellchecker
-        reference.flyTo(e.latlng, reference.getZoom());
+        reference.flyTo(e.latlng, reference.getMaxZoom());
       });
     }).addTo(reference);
   }, []);
@@ -33,7 +46,13 @@ const Map = () => {
   return (
     <MapContainer
       center={[51.10888547242358, 17.060051620079904]}
+      maxBounds={[
+        [51.119462, 17.038357],
+        [51.093382, 17.087239],
+      ]}
       zoom={17}
+      maxZoom={18}
+      minZoom={15}
       scrollWheelZoom={true}
       style={{ height: '100%', width: '100%' }}
       ref={mapContainerRef}
