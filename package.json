@@ -42,14 +42,20 @@
     "@next/font": "^13.3.1",
     "framer-motion": "^10.12.4",
     "jotai": "^2.0.4",
+    "leaflet": "^1.9.3",
+    "leaflet-defaulticon-compatibility": "^0.1.1",
+    "leaflet-geosearch": "^3.8.0",
     "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "react-leaflet": "^4.2.1"
   },
   "devDependencies": {
     "@alergeek-ventures/eslint-config": "^5.0.109",
     "@next/eslint-plugin-next": "^13.3.1",
+    "@types/geojson": "^7946.0.10",
+    "@types/leaflet": "^1.9.3",
     "@types/node": "18.16.1",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
