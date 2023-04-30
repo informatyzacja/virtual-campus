@@ -1,4 +1,4 @@
-// eslint-disable @cspell/spellchecker
+/* eslint-disable */
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
@@ -27,44 +27,64 @@ const Map = () => {
       return;
     }
 
-    L.easyButton('<FaMapMarker/>', () => {
-      //TODO currently displaying an icon doesn't work. No idea how to use an icon from react-icons instead of a font awesome webFont
+    //     L.easyButton('<FaMapMarker/>', () => {
+    //         //TODO currently displaying an icon doesn't work. No idea how to use an icon from react-icons instead of a font awesome webFont
+    //
+    //         interface locationReference {
+    //             marker?: L.Marker;
+    //             circle?: L.Circle;
+    //         }
+    //
+    //         let markerReference: L.Marker = marker([0, 0]);
+    //         let circleReference: L.Circle = circle([0, 0], 0);
+    //
+    //         if (!markerReference.getLatLng().equals([0, 0])) {
+    //             reference.removeLayer(markerReference);
+    //             reference.removeLayer(circleReference);
+    //             console.log("cheese")
+    //
+    //             // markerReference = marker([0,0]);
+    //             // circleReference = circle([0,0], 0);
+    //         } else {
+    //             reference.locate({enableHighAccuracy: true}).on('locationfound', function (e) {
+    //                 const userLocation = L.point(e.latlng.lat, e.latlng.lng);
+    //                 if (!maxBounds.contains(userLocation)) {
+    //                     //works only if manually set to the same bounds as in MapContainer as there is no method to retrieve them
+    //                     //TODO Add a message if user is outside map bounds
+    //                     return;
+    //                 }
+    //                 // setPosition()
+    //                 reference.flyTo(e.latlng, reference.getMaxZoom());
+    //                 markerReference = marker(e.latlng).bindPopup('Twoja lokalizacja');
+    //                 reference.addLayer(markerReference);
+    //                 circleReference = L.circle(e.latlng, e.accuracy);
+    //                 reference.addLayer(circleReference);
+    //                 console.log(!markerReference.getLatLng().equals([0, 0]))
+    //             });
+    //         }
+    //     }).addTo(reference);
 
-      interface locationReference {
-        marker?: L.Marker;
-        circle?: L.Circle;
-      }
-
-      let markerReference: L.Marker = marker([0, 0]);
-      let circleReference: L.Circle = circle([0, 0], 0);
-      reference
-        .locate({ enableHighAccuracy: true })
-        .on('locationfound', function (e) {
-          const userLocation = L.point(e.latlng.lat, e.latlng.lng);
-          if (!maxBounds.contains(userLocation)) {
-            //works only if manually set to the same bounds as in MapContainer as there is no method to retrieve them
-            //TODO Add a message if user is outside map bounds
-            return;
-          }
-          // setPosition()
-
-          if (!markerReference.getLatLng().equals([0, 0])) {
-            reference.removeLayer(markerReference);
-            reference.removeLayer(circleReference);
-
-            // markerReference = marker([0,0]);
-            // circleReference = circle([0,0], 0);
-          }
-
-          markerReference.remove();
-          circleReference.remove();
-
-          reference.flyTo(e.latlng, reference.getMaxZoom());
-          markerReference = marker(e.latlng)
-            .bindPopup('Twoja lokalizacja')
-            .addTo(reference);
-          circleReference = L.circle(e.latlng, e.accuracy).addTo(reference);
-        });
+    L.easyButton({
+      states: [
+        {
+          stateName: 'tracking',
+          icon: '<FaMapMarker/>',
+          title: 'Zlokalizuj się na mapie!',
+          onClick: function (control) {
+            // TODO move old logic to separate function and use here
+            control.state('notTracking');
+          },
+        },
+        {
+          stateName: 'notTracking',
+          icon: '<FaMapMarker/>',
+          title: 'Wyłącz lokalizację',
+          onClick: function (control) {
+            // TODO move / create cancel logic here
+            control.state('tracking');
+          },
+        },
+      ],
     }).addTo(reference);
   }, []);
 
