@@ -102,6 +102,7 @@ function startGeoLocation(reference: L.Map) {
   reference
     .locate({ enableHighAccuracy: true })
     .once('locationfound', function (e) {
+      // it's possible this could be reworked into a separate event handler to support constant location tracking instead of one-time location finding
       const userLocation = L.point(e.latlng.lat, e.latlng.lng);
       if (!maxBounds.contains(userLocation)) {
         //works only if manually set to the same bounds as in MapContainer as there is no method to retrieve them
@@ -114,7 +115,6 @@ function startGeoLocation(reference: L.Map) {
       reference.addLayer(markerReference);
       circleReference = circle(e.latlng, e.accuracy);
       reference.addLayer(circleReference);
-      console.log(!markerReference.getLatLng().equals([0, 0]));
     });
 }
 
