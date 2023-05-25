@@ -22,6 +22,7 @@ module.exports = {
     'no-shadow': 'off',
     'jest-dom/prefer-in-document': 'off',
     'jest-dom/prefer-to-have-attribute': 'off',
+    'react/no-unknown-property': ['error', { 'ignore': ['css'] }]
   },
   settings: {
     react: {
