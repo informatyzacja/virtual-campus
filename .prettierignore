@@ -1,0 +1,9 @@
+# Frontend files
+dist
+
+.gitignore
+.prettierignore
+.eslintrc.cjs
+
+pnpm-lock.yaml
+pnpm-workspace.yaml
