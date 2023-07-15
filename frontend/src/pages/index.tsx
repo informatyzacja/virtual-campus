@@ -6,6 +6,6 @@ export default function Home() {
   return (
     <div className={styles.map}>
       <Map />
-    </div >
+    </div>
   );
 }
