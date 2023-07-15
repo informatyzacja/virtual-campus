@@ -35,7 +35,7 @@
   "homepage": "https://github.com/informatyzacja/virtual-campus#readme",
   "devDependencies": {
     "husky": "^8.0.3",
-    "prettier": "^2.8.8"
+    "prettier": "^3.0.0"
   },
   "engines": {
     "node": "20.4.0"
