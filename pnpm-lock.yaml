@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@omikorin/prettier-config':
+        specifier: ^1.0.0
+        version: 1.0.0
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -1751,6 +1754,7 @@ packages:
 
   /@emotion/memoize@0.7.4:
     resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2043,6 +2047,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: true
+
+  /@omikorin/prettier-config@1.0.0:
+    resolution: {integrity: sha512-9pz8hc5AnZoGoaiPLoVTDu5kI3qzKUaaFpY6Ep82yrv/1J+1ulTpyDj/kOqiAktN0NCfmtxxnk9CMiz+42fAig==}
     dev: true
 
   /@pkgr/utils@2.4.2:

@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/informatyzacja/virtual-campus#readme",
   "devDependencies": {
+    "@omikorin/prettier-config": "^1.0.0",
     "husky": "^8.0.3",
     "prettier": "^3.0.0"
   },
@@ -43,6 +44,7 @@
   "volta": {
     "node": "20.4.0"
   },
+  "prettier": "@omikorin/prettier-config",
   "lint-staged": {
     "*": [
       "prettier --ignore-unknown --write"
