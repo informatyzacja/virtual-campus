@@ -67,7 +67,7 @@ jobs:
             **🖼️ Preview Environment:** _Building app..._
 
       - name: Setup env
-        run: NODE_ENV=production
+        run: echo "NODE_ENV=production" >> "$GITHUB_ENV"
 
       - name: Build app
         run: pnpm build --filter=web
