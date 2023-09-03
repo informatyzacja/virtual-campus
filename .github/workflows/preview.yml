@@ -40,17 +40,17 @@ jobs:
           message: |
             **🖼️ Preview Environment:** _Installing dependencies..._
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: 'pnpm'
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-
       - name: Install deps
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Setup GitHub Actions cache for Turbo
         uses: dtinth/setup-github-actions-caching-for-turbo@v1
