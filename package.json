@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "pnpm --dir frontend build",
-    "dev": "pnpm --dir frontend dev",
-    "format": "prettier --ignore-unknown --write frontend/src",
-    "format:check": "prettier --ignore-unknown --check frontend/src",
-    "lint": "pnpm --dir frontend lint",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "format": "turbo run format",
+    "format:check": "turbo run format:check",
+    "lint": "turbo run lint",
     "postinstall": "husky install",
-    "start": "pnpm --dir frontend start"
+    "start": "turbo run start"
   },
   "packageManager": "pnpm@8.7.1",
   "engines": {
@@ -35,8 +35,11 @@
   "homepage": "https://github.com/informatyzacja/virtual-campus#readme",
   "devDependencies": {
     "@omikorin/prettier-config": "^1.0.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "eslint": "^8.48.0",
     "husky": "^8.0.3",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "turbo": "^1.10.13"
   },
   "prettier": "@omikorin/prettier-config",
   "lint-staged": {

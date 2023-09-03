@@ -1,13 +1,17 @@
-# Frontend files
-dist
-frontend/.next
-frontend/**/mapData.json
+# artifacts
+**/build
+**/dist
+**/coverage
+**/.next
 
 *.d.ts
 
+# ignore files
 .gitignore
 .prettierignore
-.eslintrc.cjs
 
+.eslintrc.js
+
+# lockfiles
 pnpm-lock.yaml
 pnpm-workspace.yaml
