@@ -3,30 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm --dir frontend dev",
-    "postinstall": "husky install",
     "build": "pnpm --dir frontend build",
-    "start": "pnpm --dir frontend start",
+    "dev": "pnpm --dir frontend dev",
+    "format": "prettier --ignore-unknown --write frontend/src",
+    "format:check": "prettier --ignore-unknown --check frontend/src",
     "lint": "pnpm --dir frontend lint",
-    "format:check": "prettier --ignore-unknown --check frontend/src"
+    "postinstall": "husky install",
+    "start": "pnpm --dir frontend start"
   },
-  "packageManager": "pnpm@8.6.7",
+  "packageManager": "pnpm@8.7.1",
+  "engines": {
+    "node": "^20"
+  },
+  "volta": {
+    "node": "20.5.1",
+    "pnpm": "8.7.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/informatyzacja/virtual-campus.git"
   },
-  "author": {
-    "name": "Michał Korczak",
-    "url": "https://omikor.in"
-  },
+  "author": "Michał Korczak (https://omikor.in)",
   "maintainers": [
-    {
-      "name": "Michał Korczak",
-      "url": "https://omikor.in"
-    },
-    {
-      "name": "Dawid Stachowiak"
-    }
+    "Michał Korczak (https://omikor.in)",
+    "Dawid Stachowiak"
   ],
   "license": "ISC",
   "bugs": {
@@ -36,13 +36,7 @@
   "devDependencies": {
     "@omikorin/prettier-config": "^1.0.0",
     "husky": "^8.0.3",
-    "prettier": "^3.0.0"
-  },
-  "engines": {
-    "node": "20.4.0"
-  },
-  "volta": {
-    "node": "20.4.0"
+    "prettier": "^3.0.3"
   },
   "prettier": "@omikorin/prettier-config",
   "lint-staged": {

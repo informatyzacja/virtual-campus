@@ -1,6 +1,7 @@
 # Frontend files
 dist
 frontend/.next
+frontend/**/mapData.json
 
 *.d.ts
 
